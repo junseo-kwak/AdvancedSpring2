@@ -9,12 +9,12 @@ import hello.proxy.trace.logtrace.LogTrace;
 public class OrderServiceConcreteProxy extends OrderServiceV2 {
 
     private final LogTrace trace;
-    private final OrderServiceV2 orderService;
+    private final OrderServiceV2 target;
 
-    public OrderServiceConcreteProxy(OrderRepositoryV2 orderRepository, LogTrace trace, OrderServiceV2 orderService) {
-        super(orderRepository);
+    public OrderServiceConcreteProxy(LogTrace trace, OrderServiceV2 orderService) {
+        super(null);
         this.trace = trace;
-        this.orderService = orderService;
+        this.target = orderService;
     }
 
     @Override
@@ -23,7 +23,7 @@ public class OrderServiceConcreteProxy extends OrderServiceV2 {
         try{
             status = trace.begin("OrderServiceConcreteProxy.orderItem()");
 
-            orderService.orderItem(itemId);
+            target.orderItem(itemId);
 
             trace.end(status);
 

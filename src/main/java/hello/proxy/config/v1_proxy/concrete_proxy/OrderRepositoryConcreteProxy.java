@@ -8,11 +8,11 @@ import hello.proxy.trace.logtrace.LogTrace;
 public class OrderRepositoryConcreteProxy extends OrderRepositoryV2 {
 
     private final LogTrace trace;
-    private final OrderRepositoryV2 orderRepository;
+    private final OrderRepositoryV2 target;
 
     public OrderRepositoryConcreteProxy(LogTrace trace, OrderRepositoryV2 orderRepository) {
         this.trace = trace;
-        this.orderRepository = orderRepository;
+        this.target = orderRepository;
     }
 
     @Override
@@ -21,7 +21,7 @@ public class OrderRepositoryConcreteProxy extends OrderRepositoryV2 {
         try{
             status = trace.begin("OrderRepositoryConcreteProxy.save()");
 
-            orderRepository.save(itemId);
+            target.save(itemId);
 
             trace.end(status);
 
