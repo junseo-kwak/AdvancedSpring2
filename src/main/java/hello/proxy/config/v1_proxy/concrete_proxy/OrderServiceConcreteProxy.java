@@ -1,7 +1,6 @@
 package hello.proxy.config.v1_proxy.concrete_proxy;
 
 
-import hello.proxy.app.v2.OrderRepositoryV2;
 import hello.proxy.app.v2.OrderServiceV2;
 import hello.proxy.trace.TraceStatus;
 import hello.proxy.trace.logtrace.LogTrace;
